@@ -1,0 +1,104 @@
+/*
+* @Author: 10709
+* @Date:   2019-12-12 15:59:15
+* @Last Modified by:   10709
+* @Last Modified time: 2019-12-13 19:45:23
+*/
+*{
+	padding: 0;
+	margin: 0;
+}
+ul,li{
+	list-style: none;
+}
+.running{
+	height: 30px;
+	background-color: #ccc;
+}
+.box{
+	width: 1200px;
+	height: 382px;
+	border: 1px solid red;
+	margin: 10px auto;
+	position: relative;
+	overflow: hidden;
+}
+.nn{
+	height: 30px;
+}
+.nei{
+	width: 890px;
+	height: 20px;
+	position: absolute;
+	padding: 5px 0 0 0;
+	left: 220px;
+	top: -0px;
+	overflow: hidden;
+}
+.nn>img{
+	position: relative;
+	left: 200px;
+	margin-top: 7px;
+}
+#wenzi{
+	position: absolute;
+	left: 900px;
+	overflow: hidden;
+}
+#wenzi>span{
+	color: red;
+	font-size: 14px;
+}
+
+.slider{
+	width: 8400px;
+	position: absolute;
+	left: -1200px;
+}
+.slide{
+	width: 1200px;
+	overflow: hidden;
+	float: left;
+}
+.box>span{
+	display: block;
+	width: 30px;
+	height: 50px;
+	text-align: center;
+	cursor: pointer;
+	color:  ;
+	top: 175px;
+	line-height: 50px;
+	background: rgb(255,0,0);
+	font-size: 30px;
+	position: absolute;
+	opacity: 0;
+
+}
+#left{
+	left: 30px;
+}
+#right{
+	right: 30px;
+}
+.nav{
+	position: absolute;
+	left: 500px;
+	bottom: 20px;
+}
+.nav>li{
+	float: left;
+	width: 20px;
+	height: 20px;
+	background: #ccc;
+	cursor: pointer;
+	margin: 0 10px;
+	border-radius: 50%;
+}
+.pp{
+	position: relative;
+	left: 5px;
+}
+.nav .active{
+	background: red;
+}

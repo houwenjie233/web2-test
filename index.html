@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>animate-lunbo</title>
+	<link rel="stylesheet" href="style.css">
+	<script src="animate.js"></script>
+</head>
+<body>
+	<div class="running">
+		<div class="nn">
+			<img src="images/a15.png" alt="" >
+			<div class="nei">
+				<div id="wenzi">
+					<span>[温馨提示]最近有不少不法分子在网上骗人，请大家注意!!!</span>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="box" id="box">
+		
+		<div class="slider" id="slider">
+			<div class="slide"><img src="images/b5.png" alt=""></div>
+			<div class="slide"><img src="images/b1.png" alt=""></div>
+			<div class="slide"><img src="images/b2.png" alt=""></div>
+			<div class="slide"><img src="images/b3.png" alt=""></div>
+			<div class="slide"><img src="images/b4.png" alt=""></div>
+			<div class="slide"><img src="images/b5.png" alt=""></div>
+			<div class="slide"><img src="images/b1.png" alt=""></div>
+		</div>
+		<span id="left"><</span>
+		<span id="right">></span>
+		<ul class="nav" id="nav">
+			<li class="active"><p class="pp">1</p></li>
+			<li><p class="pp">2</p></li>
+			<li><p class="pp">3</p></li>
+			<li><p class="pp">4</p></li>
+			<li><p class="pp">5</p></li>
+		</ul>
+	</div>
+</body>
+<script type="text/javascript">
+	var box=document.getElementById("box");
+	var oNavlist=document.getElementById("nav").children;
+	var slider=document.getElementById("slider");
+	var left=document.getElementById("left");
+	var right=document.getElementById("right");
+
+	var wenzi=document.getElementById("wenzi");
+	var timmer=setInterval(function(){
+		var now=parseInt(getStyle(wenzi,'left'));
+		console.log(now);
+		now=now>0?Math.ceil(now):Math.floor(now);
+		wenzi.style.left=now-1+"px";
+		if(wenzi.style.left=="-360px"){
+			wenzi.style.left="900px";
+	}
+	},10);
+	
+	var index=1;
+	var timer;
+	var isMoving=false;
+	function nextpic(){
+		if(!isMoving){
+			isMoving=true;
+			index++;
+			change();
+			animate(slider,{left:-1200*index},function(){
+				if(index===6){
+					slider.style.left="-1200px";
+					index=1;
+				};
+				isMoving=false;
+			});
+		}
+		
+	}
+	function prepic(){
+		if(!isMoving){
+			isMoving=true;
+			index--;
+			change();
+			animate(slider,{left:-1200*index},function(){
+				if(index===0){
+					slider.style.left="-6000px";
+					index=5;
+				};
+				isMoving=false;
+			});
+		}
+		
+	}
+	var timer=setInterval(nextpic, 3000)
+	box.onmouseover=function(){
+		animate(left,{opacity:50});
+		animate(right,{opacity:50});
+		clearInterval(timer);
+	}
+	box.onmouseout=function(){
+		animate(left,{opacity:0});
+		animate(right,{opacity:0});
+		timer=setInterval(nextpic,3000);
+	}
+	left.onclick=prepic;
+	right.onclick=nextpic;
+
+	for(var i=0;i<oNavlist.length;i++){
+		oNavlist[i].idx=i;
+		oNavlist[i].onclick=function(){
+			index=this.idx + 1;
+			change();
+			animate(slider,{left:-1200*index});
+		}
+	}
+	function change(){
+		for(var i=0;i<oNavlist.length;i++){
+			oNavlist[i].className='';
+		}
+		if(index===6){
+			oNavlist[0].className="active";
+		}else if(index===0){
+			oNavlist[4].className="active";
+		}else{
+			oNavlist[index-1].className="active";
+		}
+		
+	}
+</script>
+</html>
